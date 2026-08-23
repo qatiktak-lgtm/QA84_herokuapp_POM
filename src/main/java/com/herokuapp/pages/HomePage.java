@@ -40,6 +40,17 @@ public class HomePage extends BasePage {
                 "'Powered by' inscription not found!");
         assertTrue(isElementalSeleniumLinkCorrect(),
                 "The link does not lead to: " + ELEMENTAL_SELENIUM_URL);
+        System.out.println("~".repeat(90));
+        System.out.println("The link is valid and leads to: " + ELEMENTAL_SELENIUM_URL + "The Tsar—the real one!");
+    }
 
+    @FindBy(css = "a[href='/javascript_alerts']")
+    WebElement itemJavaScriptAlerts;
+    public boolean isElementJavaScriptAlertsPresent() {
+        return isElementPresent(itemJavaScriptAlerts);
+    }
+
+    public void clickJavaScriptAlerts() {
+        click(itemJavaScriptAlerts);
     }
 }

@@ -5,9 +5,13 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class BasePage {
     protected WebDriver driver;
+    protected static final Logger logger =
+            LoggerFactory.getLogger(BasePage.class);
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -16,6 +20,7 @@ public abstract class BasePage {
 
     public void click(WebElement element) {
         element.click();
+        logger.info("Clicked on element");
     }
 
     public void type(WebElement element, String text) {
@@ -23,6 +28,7 @@ public abstract class BasePage {
             click(element);
             element.clear();
             element.sendKeys(text);
+            logger.info("Typed text: " + text);
         }
     }
 
