@@ -17,11 +17,11 @@
         </encoder>
     </appender>
 
-    <logger name="io.github.bonigarcia.wdm" level="WARN"/>
-    <logger name="io.github.bonigarcia.wdm.cache" level="WARN"/>
-    <logger name="org.apache.hc" level="WARN"/>
-    <logger name="org.apache.http" level="WARN"/>
-    <logger name="org.openqa.selenium" level="WARN"/>
+    <logger name="io.github.bonigarcia.wdm" level="INFO"/>
+    <logger name="io.github.bonigarcia.wdm.cache" level="INFO"/>
+    <logger name="org.apache.hc" level="INFO"/>
+    <logger name="org.apache.http" level="INFO"/>
+    <logger name="org.openqa.selenium" level="INFO"/>
 
     <logger name="com.herokuapp" level="INFO"/>
 
