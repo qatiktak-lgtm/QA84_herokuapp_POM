@@ -60,4 +60,6 @@ public class JsAlertsTests extends TestBase {
         alerts.manualDataEntry("ABC7", "Cancel")
                 .verifyResult("null");
     }
+
+
 }

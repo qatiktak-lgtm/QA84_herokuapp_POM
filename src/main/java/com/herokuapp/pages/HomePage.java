@@ -53,4 +53,11 @@ public class HomePage extends BasePage {
     public void clickJavaScriptAlerts() {
         click(itemJavaScriptAlerts);
     }
+
+    @FindBy(css = "a[href='/windows']")
+    WebElement windows;
+
+    public void clickMultipleWindows() {
+        click(windows);
+    }
 }
