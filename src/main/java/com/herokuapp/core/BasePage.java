@@ -44,4 +44,8 @@ public abstract class BasePage {
     public String getAttribute(WebElement element, String attributeName) {
         return element.getAttribute(attributeName);
     }
+
+    public boolean isContainsText(String text, WebElement element) {
+        return element.getText().contains(text);
+    }
 }
