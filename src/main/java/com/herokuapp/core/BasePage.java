@@ -1,5 +1,6 @@
 package com.herokuapp.core;
 
+import com.herokuapp.pages.javaScriptAlerts.NewWindowsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 public abstract class BasePage {
@@ -27,7 +30,6 @@ public abstract class BasePage {
 
     public void click(WebElement element) {
         element.click();
-        logger.info("Clicked on element");
     }
 
     public void type(WebElement element, String text) {
@@ -55,4 +57,6 @@ public abstract class BasePage {
     public boolean isContainsText(String text, WebElement element) {
         return wait.until(ExpectedConditions.textToBePresentInElement(element, text));
     }
+
+
 }

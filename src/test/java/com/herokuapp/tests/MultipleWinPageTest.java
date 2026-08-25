@@ -19,8 +19,8 @@ public class MultipleWinPageTest extends TestBase {
     }
 
     @Test
-    public void newWindow(){
-        multiWin.verifyHeder("Opening a new window")
+    public void newWindowTest(){
+        multiWin.verifyHeader("Opening a new window")
                 .clickOnLink();
         new NewWindowsPage(driver).switchToNewTab(1)
                 .verifyWindowTitle("New Window");

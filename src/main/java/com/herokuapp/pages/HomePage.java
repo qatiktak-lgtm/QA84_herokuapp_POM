@@ -56,8 +56,13 @@ public class HomePage extends BasePage {
 
     @FindBy(css = "a[href='/windows']")
     WebElement windows;
-
     public void clickMultipleWindows() {
         click(windows);
+    }
+
+    @FindBy(css = "a[href='/frames']")
+    WebElement frames;
+    public void clickFrames() {
+        click(frames);
     }
 }

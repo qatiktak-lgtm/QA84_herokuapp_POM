@@ -14,7 +14,7 @@ public class MultipleWinPage extends BasePage {
 
     @FindBy(css = "div[class='example'] h3")
     WebElement header;
-    public MultipleWinPage verifyHeder(String text) {
+    public MultipleWinPage verifyHeader(String text) {
         Assertions.assertTrue(isContainsText(text, header));
         logger.info("Result verified: " + text);
         return this;
