@@ -46,6 +46,7 @@ public class HomePage extends BasePage {
 
     @FindBy(css = "a[href='/javascript_alerts']")
     WebElement itemJavaScriptAlerts;
+
     public boolean isElementJavaScriptAlertsPresent() {
         return isElementPresent(itemJavaScriptAlerts);
     }
@@ -56,13 +57,30 @@ public class HomePage extends BasePage {
 
     @FindBy(css = "a[href='/windows']")
     WebElement windows;
+
     public void clickMultipleWindows() {
         click(windows);
     }
 
     @FindBy(css = "a[href='/frames']")
     WebElement frames;
+
     public void clickFrames() {
         click(frames);
+    }
+
+    @FindBy(css = "a[href='/dropdown']")
+    WebElement dropdownLocator;
+
+    public DropdownListPage clickDropdown() {
+        click(dropdownLocator);
+        return new DropdownListPage(driver);
+    }
+
+    @FindBy(css = "a[href='/drag_and_drop']")
+    WebElement drag_and_drop;
+    public Drag_DropPage clickDragDrop() {
+        click(drag_and_drop);
+        return new Drag_DropPage(driver);
     }
 }
