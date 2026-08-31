@@ -19,7 +19,7 @@ public class Drag_DropPageTest extends TestBase {
     @Test
     public void dragDropTest(){
         dragdrop.dragAndDrop()
-                .verifyDragDrop();
+                .verifyDragDrop("A");
 
     }
 }

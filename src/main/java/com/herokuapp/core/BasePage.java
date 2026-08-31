@@ -1,7 +1,7 @@
 package com.herokuapp.core;
 
-import com.herokuapp.pages.javaScriptAlerts.NewWindowsPage;
-import org.openqa.selenium.By;
+import org.assertj.core.api.SoftAssertions;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,12 +22,16 @@ public abstract class BasePage {
     protected WebDriverWait wait;
     protected static final Logger logger =
             LoggerFactory.getLogger(BasePage.class);
+    public static JavascriptExecutor js;
+    public static SoftAssertions softly;
     protected static Actions actions;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+        js = (JavascriptExecutor) driver;
+        softly = new SoftAssertions();
         actions = new Actions(driver);
     }
 
@@ -59,6 +63,10 @@ public abstract class BasePage {
 
     public boolean isContainsText(String text, WebElement element) {
         return wait.until(ExpectedConditions.textToBePresentInElement(element, text));
+    }
+
+    public String getValue(WebElement element) {
+        return element.getText();
     }
 
 

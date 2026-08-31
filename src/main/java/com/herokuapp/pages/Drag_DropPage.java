@@ -23,8 +23,8 @@ public class Drag_DropPage extends BasePage {
         return this;
     }
 
-    public Drag_DropPage verifyDragDrop() {
-        Assertions.assertEquals("A", target.getText());
+    public Drag_DropPage verifyDragDrop(String expectedText) {
+        Assertions.assertEquals(expectedText, target.getText());
         return this;
     }
 }
