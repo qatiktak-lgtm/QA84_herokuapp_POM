@@ -11,24 +11,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeoutException;
+
 
 public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected static final Logger logger =
             LoggerFactory.getLogger(BasePage.class);
-    public static JavascriptExecutor js;
-    public static SoftAssertions softly;
-    protected static Actions actions;
+    protected JavascriptExecutor js;
+    protected SoftAssertions softly;
+    protected Actions actions;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

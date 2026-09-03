@@ -3,7 +3,6 @@ package com.herokuapp.pages.javaScriptAlerts;
 import com.herokuapp.core.BasePage;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

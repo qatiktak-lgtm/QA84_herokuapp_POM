@@ -1,12 +1,10 @@
 package com.herokuapp.pages;
 
 import com.herokuapp.core.BasePage;
-import com.herokuapp.pages.javaScriptAlerts.NewWindowsPage;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.ArrayList;
 import java.util.List;
 

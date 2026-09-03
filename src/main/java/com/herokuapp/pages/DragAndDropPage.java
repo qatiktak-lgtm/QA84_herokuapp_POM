@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class Drag_DropPage extends BasePage {
-    public Drag_DropPage(WebDriver driver) {
+public class DragAndDropPage extends BasePage {
+    public DragAndDropPage(WebDriver driver) {
         super(driver);
     }
 
@@ -17,19 +17,19 @@ public class Drag_DropPage extends BasePage {
     @FindBy(id="column-b")
     WebElement target;
 
-    public Drag_DropPage dragAndDropLR() {
+    public DragAndDropPage dragAndDropLR() {
         Actions actions = new Actions(driver);
         actions.dragAndDrop(source, target).perform();
         return this;
     }
 
-    public Drag_DropPage dragAndDropRL() {
+    public DragAndDropPage dragAndDropRL() {
         Actions actions = new Actions(driver);
         actions.dragAndDrop(target, source).perform();
         return this;
     }
 
-    public Drag_DropPage verifyDragDrop(String expectedText) {
+    public DragAndDropPage verifyDragDrop(String expectedText) {
         Assertions.assertEquals(expectedText, target.getText());
         return this;
     }

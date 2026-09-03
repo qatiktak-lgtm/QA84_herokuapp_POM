@@ -80,9 +80,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/drag_and_drop']")
     WebElement drag_and_drop;
 
-    public Drag_DropPage clickDragDrop() {
+    public DragAndDropPage clickDragDrop() {
         click(drag_and_drop);
-        return new Drag_DropPage(driver);
+        return new DragAndDropPage(driver);
     }
 
     @FindBy(css = "a[href='/horizontal_slider']")
