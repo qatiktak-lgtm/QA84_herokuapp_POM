@@ -6,7 +6,7 @@ import com.herokuapp.pages.HomePage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class Drag_DropPageTest extends TestBase {
+public class DragAndDropPageTest extends TestBase {
 
     DragAndDropPage dragdrop;
 
