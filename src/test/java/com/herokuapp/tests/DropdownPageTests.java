@@ -6,21 +6,26 @@ import com.herokuapp.pages.HomePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class DropdownPageTests extends TestBase {
 
     DropdownListPage dropdown;
 
     @BeforeEach
-    public void precondition(){
-        new HomePage(driver).clickDropdown();
-        dropdown = new DropdownListPage(driver);
+    public void precondition() {
+        dropdown = new HomePage(driver).clickDropdown();
     }
 
-    @Test
-    public void dropdownTest(){
-        dropdown.selectOptionByValue("2");
+    @ParameterizedTest
+    @CsvSource({
+            "1, Option 1",
+            "2, Option 2"
+    })
+    public void dropdownTest(String value, String expectedText) {
+        dropdown.selectOptionByValue(value);
         String text = dropdown.getSelectedOptionText();
-        Assertions.assertEquals("Option 2", text);
+        Assertions.assertEquals(expectedText, text);
     }
 }

@@ -12,13 +12,11 @@ public class BrokenImagesTests extends TestBase {
 
     @BeforeEach
     public void precondition() {
-        brokenImagesPage = new BrokenImagesPage(driver);
-        new HomePage(driver).getImagesPage();
+        brokenImagesPage = new HomePage(driver).getImagesPage();
     }
 
     @Test
     public void BrokenImagesTest() {
         brokenImagesPage.checkBrokenImages();
     }
-
 }

@@ -6,14 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BrokenImagesPage extends BasePage {
+
     public BrokenImagesPage(WebDriver driver) {
         super(driver);
     }
@@ -27,7 +24,10 @@ public class BrokenImagesPage extends BasePage {
         List<String> brokenImages = new ArrayList<>();
         System.out.println("Total images on the page = " + images.size());
         for (WebElement image : images) {
-            String imageUrl = image.getAttribute("src");
+            String imageUrl = image.getDomAttribute("src");
+            String imageName = image.getDomAttribute("alt");
+
+            System.out.println("Image name: " + imageName + " | URL: " + imageUrl);
             verifyLink(imageUrl);
 
             if (!isImageLoaded(image)) {
@@ -35,39 +35,10 @@ public class BrokenImagesPage extends BasePage {
             }
         }
         if (!brokenImages.isEmpty()) {
-            softly.fail("Broken images found: " + brokenImages);
+            softly.fail("Broken links images found: " + brokenImages);
+            System.out.println("~".repeat(90));
         }
         softly.assertAll();
         return this;
     }
-
-    private void verifyLink(String imageUrl) {
-        try {
-            HttpURLConnection connection = (HttpURLConnection) new URL(imageUrl).openConnection();
-            connection.setConnectTimeout(5000);
-            connection.setInstanceFollowRedirects(true);
-
-            int statusCode = connection.getResponseCode();
-
-            if (statusCode >= 400) {
-                softly.fail(imageUrl + " --> " + connection.getResponseMessage());
-            }
-        } catch (MalformedURLException e) {
-            softly.fail(imageUrl + " --> Invalid URL: " + e.getMessage());
-        } catch (IOException e) {
-            softly.fail(imageUrl + " --> Network error: " + e.getMessage());
-        }
-    }
-
-    private boolean isImageLoaded(WebElement image) {
-        try {
-            return (Boolean) js.executeScript(
-                    "return (typeof arguments[0].naturalWidth!=undefined && arguments[0].naturalWidth>0);",
-                    image);
-        } catch (Exception e) {
-            return false;
-        }
-    }
-    
-    
 }

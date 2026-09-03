@@ -17,9 +17,15 @@ public class Drag_DropPage extends BasePage {
     @FindBy(id="column-b")
     WebElement target;
 
-    public Drag_DropPage dragAndDrop() {
+    public Drag_DropPage dragAndDropLR() {
         Actions actions = new Actions(driver);
         actions.dragAndDrop(source, target).perform();
+        return this;
+    }
+
+    public Drag_DropPage dragAndDropRL() {
+        Actions actions = new Actions(driver);
+        actions.dragAndDrop(target, source).perform();
         return this;
     }
 

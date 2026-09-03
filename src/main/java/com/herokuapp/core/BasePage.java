@@ -12,6 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,4 +74,31 @@ public abstract class BasePage {
     }
 
 
+    protected void verifyLink(String imageUrl) {
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(imageUrl).openConnection();
+            connection.setConnectTimeout(5000);
+            connection.setInstanceFollowRedirects(true);
+
+            int statusCode = connection.getResponseCode();
+
+            if (statusCode >= 400) {
+                softly.fail(imageUrl + " --> " + connection.getResponseMessage());
+            }
+        } catch (MalformedURLException e) {
+            softly.fail(imageUrl + " --> Invalid URL: " + e.getMessage());
+        } catch (IOException e) {
+            softly.fail(imageUrl + " --> Network error: " + e.getMessage());
+        }
+    }
+
+    protected boolean isImageLoaded(WebElement image) {
+        try {
+            return (Boolean) js.executeScript(
+                    "return (typeof arguments[0].naturalWidth!=undefined && arguments[0].naturalWidth>0);",
+                    image);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

@@ -12,14 +12,18 @@ public class Drag_DropPageTest extends TestBase {
 
     @BeforeEach
     public void precondition() {
-        new HomePage(driver).clickDragDrop();
-        dragdrop = new Drag_DropPage(driver);
+        dragdrop = new HomePage(driver).clickDragDrop();
     }
 
     @Test
-    public void dragDropTest(){
-        dragdrop.dragAndDrop()
+    public void dragDropLeftToRightTest(){
+        dragdrop.dragAndDropLR()
                 .verifyDragDrop("A");
+    }
 
+    @Test
+    public void dragDropRightToLeftTest(){
+        dragdrop.dragAndDropRL()
+                .verifyDragDrop("A");
     }
 }

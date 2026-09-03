@@ -10,8 +10,7 @@ public class SliderTests extends TestBase {
     HorizontalSliderPage sliderPage;
     @BeforeEach
     public void precondition(){
-        new HomePage(driver).getHorizontalSlider();
-        sliderPage = new HorizontalSliderPage(driver);
+        sliderPage = new HomePage(driver).getHorizontalSlider();
     }
 
     @Test
